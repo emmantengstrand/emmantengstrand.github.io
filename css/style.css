@@ -1,11 +1,12 @@
 body {
   background: #fff;
-  color: gray;
-  font-family: "Pontano Sans", sans-serif;
+  color: black;
+  font-family: "Open Sans", sans-serif;
 }
 
 a {
-  color: gray;
+  color: black;
+  font-weight: bold;
   transition: 0.5s;
 }
 
@@ -19,7 +20,6 @@ a:focus {
 
 p {
   padding: 0;
-  /* margin: 0 0 30px 0; */
   color: gray;
 }
 
@@ -102,26 +102,26 @@ h6 {
 }
 
 #header {
-  height: 92px;
+  height: 90px;
   position: fixed;
   left: 0;
   top: 0;
   right: 0;
   transition: all 0.5s;
   z-index: 997;
+  background: rgba(255, 255, 255, 0.9);
 }
 
 #header.header-scrolled {
-  background: rgba(255, 255, 255, 0.9);
-  height: 72px;
+  background: rgba(255, 255, 255, 0.5);
+  height: 82px;
   transition: all 0.5s;
 }
 
 #header #logo {
   float: left;
-  width: 50%;
-  font-size: 25px;
-  padding: 10px 0 0 0;
+  font-size: 30px;
+  padding: 30px 0 0 0;
   line-height: 1;
   letter-spacing: 0px;
 }
@@ -130,6 +130,22 @@ h6 {
 #header #logo h1 a:hover {
   color: #fff;
   margin-top: 10px;
+}
+
+#intro .btn-get-started {
+  display: inline-block;
+  padding: 8px 32px;
+  border-radius: 50px;
+  border: 2px solid white;
+  transition: 0.5s;
+  background: rgb(255, 255, 255, 0);
+  color: white;
+}
+
+#intro .btn-get-started:hover {
+  background: rgb(255, 255, 255, 0.6);
+  border: 2px solid white;
+  color: white;
 }
 
 #intro {
@@ -149,7 +165,7 @@ h6 {
 
 #intro .carousel-item::before {
   content: "";
-  background-color: rgb(255, 255, 255, 0.9);
+  background-color: rgb(255, 255, 255, 0.1);
   position: absolute;
   height: 100%;
   width: 100%;
@@ -164,39 +180,41 @@ h6 {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+  -webkit-box-pack: left;
+  -webkit-justify-content: left;
+  -ms-flex-pack: left;
+  justify-content: left;
   -webkit-box-align: center;
   -webkit-align-items: center;
   -ms-flex-align: center;
-  align-items: center;
   position: absolute;
   bottom: 0;
   top: 0;
   left: 0;
   right: 0;
+  height: 100%;
 }
 
 #intro .carousel-background img {
   max-width: 100%;
+  height: 50%;
 }
 
 #intro .carousel-content {
-  text-align: center;
+  text-align: left;
+  width: 50%;
+  padding-left: 5%;
 }
 
 #intro h2 {
   color: #fff;
   margin-bottom: 30px;
   font-size: 48px;
-  font-weight: 700;
+  font-weight: bold;
 }
 
 #intro p {
   width: 80%;
-  margin: 0 auto 30px auto;
   color: #fff;
 }
 
@@ -279,7 +297,7 @@ h6 {
 }
 
 .nav-menu a {
-  padding: 5px 8px 5px 8px;
+  padding: 35px 8px 5px 8px;
   text-decoration: none;
   display: inline-block;
   color: gray;
@@ -469,7 +487,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   padding: 0 0 30px 0;
   color: black;
   font-size: 16px;
-  font-family: "Alegreya Sans", sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 #footer .footer-top .footer-links {
@@ -506,7 +524,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 @media (min-width: 1024px) {
   #header #logo {
-    padding-left: 60px;
+    padding-left: 10px;
   }
 
   #intro p {
