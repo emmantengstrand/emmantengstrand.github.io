@@ -14,7 +14,7 @@ a {
 a:hover,
 a:active,
 a:focus {
-  color: lightgray;
+  color: white;
   outline: none;
   text-decoration: none;
 }
@@ -71,7 +71,7 @@ h6 {
   top: calc(50% - 30px);
   left: calc(50% - 30px);
   border: 6px solid #f2f2f2;
-  border-top: 6px solid lightgray;
+  border-top: 6px solid rgb(113, 207, 235, 1);
   border-radius: 50%;
   width: 80px;
   height: 80px;
@@ -137,14 +137,17 @@ h6 {
   margin-top: 10px;
 }
 
-.img-book {
-  height: 40%;
-  border-radius: 2%;
+.img-profile {
+  border-radius: 50%;
+  margin: 1em;
+  border: 1px solid lightblue;
+  text-align: center;
 }
 
 #intro .btn-get-started {
   display: inline-block;
   padding: 8px 32px;
+  margin: 1px;
   border-radius: 50px;
   border: 2px solid white;
   transition: 0.5s;
@@ -161,6 +164,7 @@ h6 {
 #intro .btn2-get-started {
   display: inline-block;
   padding: 8px 32px;
+  margin: 1px;
   border-radius: 50px;
   border: 2px solid white;
   transition: 0.5s;
@@ -362,7 +366,7 @@ h6 {
   padding-top: 55px;
   bottom: 0;
   z-index: 998;
-  background: gray(182, 33, 33, 0.5);
+  background: rgb(113, 207, 235, 1);
   left: -260px;
   width: 260px;
   overflow-y: auto;
@@ -493,6 +497,10 @@ body.mobile-nav-active #mobile-nav-toggle {
   line-height: 24px;
   margin-bottom: 0;
   padding: 0 20px 20px 20px;
+}
+
+#about ul {
+  color: gray;
 }
 
 .book-link {
