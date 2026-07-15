@@ -1,396 +1,707 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Anders Tengstrand | Funderingar kring matematik</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta content="Anders Tengstrand | Funderingar kring matematik" name="keywords">
-  <meta content="Anders Tengstrand har arbetat som universitetslektor i matematik på Växjö universitet
-  och har dessförrinnan arbetat med undervisning. Han har bland annat skrivit en text om matematikens utveckling" name="description">
+  <meta name="description" content="Samlade texter av Anders Tengstrand om matematikens historia, idéer och undervisning.">
+  <meta name="keywords" content="Anders Tengstrand, matematik, matematikundervisning, matematikens historia, Växjö universitet">
+  <meta name="robots" content="index,follow">
 
-  <!-- Favicons -->
-  <link href="img/logos/logo.png" rel="icon">
-  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+  <meta property="og:title" content="Anders Tengstrand | Funderingar kring matematik">
+  <meta property="og:description" content="Samlade texter om matematikens historia, idéer och undervisning.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="img/profile-pics/anderstengstrand.png">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Poppins&display=swap" rel="stylesheet">
+  <link rel="icon" href="img/logos/logo.png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <link rel="preload" as="image" href="img/intro-carousel/faded.jpg">
 
-  <!-- Bootstrap CSS File -->
-  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --text: #1f2937;
+      --muted: #64748b;
+      --primary: #4f9fbe;
+      --primary-dark: #256f8f;
+      --primary-soft: #dff3f8;
+      --border: #e2e8f0;
+      --shadow: 0 18px 45px rgba(15, 23, 42, .10);
+      --radius: 22px;
+      --max: 1120px;
+    }
 
-  <!-- Libraries CSS Files -->
-  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="lib/animate/animate.min.css" rel="stylesheet">
-  <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; }
 
-  <!-- Main Stylesheet File -->
-  <link href="css/style.css" rel="stylesheet">
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(226,232,240,.75);
+    }
+    .nav-wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 72px;
+      padding: 0 20px;
+      gap: 20px;
+    }
+    .brand {
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      font-size: 15px;
+      color: var(--text);
+      white-space: nowrap;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 14px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      transition: background .2s ease, color .2s ease;
+    }
+    .nav-links a:hover, .nav-links a:focus {
+      background: var(--primary-soft);
+      color: var(--primary-dark);
+      outline: none;
+    }
+    .menu-btn {
+      display: none;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      border-radius: 999px;
+      padding: 9px 12px;
+      font-weight: 800;
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .hero {
+      min-height: 78svh;
+      display: grid;
+      place-items: center;
+      padding: 88px 20px 72px;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      background:
+        linear-gradient(120deg, rgba(15,23,42,.78), rgba(37,111,143,.48)),
+        url("img/intro-carousel/faded.jpg") center/cover no-repeat;
+      color: white;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -15% -35% -15%;
+      height: 55%;
+      background: radial-gradient(circle at center, rgba(223,243,248,.35), transparent 62%);
+      z-index: -1;
+    }
+    .hero-content {
+      max-width: 850px;
+      text-align: center;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255,255,255,.45);
+      background: rgba(255,255,255,.12);
+      backdrop-filter: blur(10px);
+      border-radius: 999px;
+      padding: 7px 14px;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    h1, h2, h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.12;
+      margin: 0;
+    }
+    h1 {
+      font-size: clamp(44px, 8vw, 86px);
+      letter-spacing: -0.05em;
+    }
+    .hero p {
+      max-width: 720px;
+      margin: 22px auto 0;
+      color: rgba(255,255,255,.9);
+      font-size: clamp(18px, 2vw, 23px);
+    }
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 12px 20px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 800;
+      border: 1px solid transparent;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: white; color: var(--text); }
+    .btn-secondary { color: white; border-color: rgba(255,255,255,.5); background: rgba(255,255,255,.10); }
+    .btn-small { min-height: 40px; padding: 9px 14px; font-size: 14px; }
+
+    main { overflow: hidden; }
+    .section {
+      padding: 76px 20px;
+    }
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+    .section-title {
+      max-width: 760px;
+      margin: 0 auto 34px;
+      text-align: center;
+    }
+    .section-title h2 {
+      font-size: clamp(32px, 5vw, 54px);
+      letter-spacing: -0.04em;
+      color: var(--text);
+    }
+    .section-title p {
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .about-card {
+      display: grid;
+      grid-template-columns: 290px 1fr;
+      gap: 34px;
+      align-items: start;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 30px;
+    }
+    .portrait-wrap {
+      position: sticky;
+      top: 100px;
+    }
+    .portrait {
+      border-radius: 50%;
+      border: 8px solid var(--primary-soft);
+      aspect-ratio: 1;
+      object-fit: cover;
+      margin: 0 auto;
+      max-width: 230px;
+    }
+    .about-text p { margin-top: 0; color: var(--muted); }
+    .about-highlight {
+      margin-top: 22px;
+      padding: 18px 20px;
+      border-left: 5px solid var(--primary);
+      background: var(--primary-soft);
+      border-radius: 16px;
+      color: var(--text);
+    }
+
+    .featured {
+      background: linear-gradient(180deg, #ffffff, #edf8fb);
+    }
+    .feature-card {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 34px;
+      align-items: center;
+      background: #0f172a;
+      color: white;
+      border-radius: calc(var(--radius) + 6px);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .feature-text { padding: 42px; }
+    .feature-text h2 { font-size: clamp(34px, 5vw, 58px); letter-spacing: -0.04em; }
+    .feature-text p { color: rgba(255,255,255,.82); font-size: 17px; }
+    .feature-image {
+      min-height: 340px;
+      height: 100%;
+      background: url("img/intro-carousel/Math-Teacher-Poster.jpg") center/cover no-repeat;
+    }
+
+    .publications-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .pub-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 245px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: 0 10px 28px rgba(15,23,42,.06);
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .pub-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+      border-color: rgba(79,159,190,.55);
+    }
+    .pub-number {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--primary-soft);
+      color: var(--primary-dark);
+      font-weight: 900;
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+    .pub-card h3 {
+      font-size: 24px;
+      letter-spacing: -0.025em;
+      margin-bottom: 10px;
+    }
+    .pub-card p {
+      margin: 0 0 20px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    .pub-actions {
+      margin-top: auto;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .open-pdf {
+      background: var(--text);
+      color: white;
+    }
+    .download-pdf {
+      background: var(--primary-soft);
+      color: var(--primary-dark);
+    }
+
+    .contact {
+      background: white;
+    }
+    .contact-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      padding: 28px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      background: linear-gradient(135deg, white, #f0f9fc);
+    }
+    .contact-card h2 { font-size: clamp(30px, 4vw, 46px); }
+    .contact-card p { color: var(--muted); }
+    .email-link {
+      display: inline-flex;
+      margin-top: 10px;
+      color: var(--primary-dark);
+      font-weight: 900;
+      text-decoration: none;
+    }
+
+    .site-footer {
+      background: #111827;
+      color: white;
+      padding: 34px 20px;
+    }
+    .footer-grid {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 24px;
+    }
+    .footer-grid p { margin: 0; color: rgba(255,255,255,.72); }
+    .counter-wrap {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .counter-box {
+      min-width: 190px;
+      padding: 12px 14px;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 16px;
+      background: rgba(255,255,255,.06);
+    }
+    .counter-box span {
+      display: block;
+      font-size: 12px;
+      color: rgba(255,255,255,.65);
+      margin-bottom: 6px;
+    }
+    .manual-counter {
+      display: none;
+      font-size: 22px;
+      color: white;
+      font-weight: 900;
+      letter-spacing: .05em;
+    }
+    .counter-external img {
+      width: auto;
+      height: auto;
+      max-height: 32px;
+    }
+
+    .back-to-top {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 0;
+      background: var(--text);
+      color: white;
+      cursor: pointer;
+      display: none;
+      box-shadow: 0 12px 24px rgba(15,23,42,.25);
+      z-index: 60;
+    }
+    .back-to-top.is-visible { display: grid; place-items: center; }
+
+    @media (max-width: 920px) {
+      .publications-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .feature-card { grid-template-columns: 1fr; }
+      .feature-image { min-height: 240px; order: -1; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .counter-wrap { justify-content: flex-start; }
+    }
+    @media (max-width: 760px) {
+      .nav-links {
+        position: absolute;
+        top: 72px;
+        left: 12px;
+        right: 12px;
+        flex-direction: column;
+        align-items: stretch;
+        background: white;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 10px;
+        box-shadow: var(--shadow);
+        display: none;
+      }
+      .nav-links.is-open { display: flex; }
+      .menu-btn { display: inline-flex; }
+      .hero { min-height: 72svh; padding-top: 70px; }
+      .about-card { grid-template-columns: 1fr; padding: 22px; }
+      .portrait-wrap { position: static; }
+      .feature-text { padding: 28px; }
+      .publications-grid { grid-template-columns: 1fr; }
+      .contact-card { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 
 <body>
-  <header id="header">
-    <div class="container-fluid">
-
-      <div id="logo" class="pull-left">
-        <a href="#intro">ANDERS TENGSTRAND</a>
-      </div>
-
-      <nav id="nav-menu-container">
-        <ul class="nav-menu">
-          <li><a href="#about">Om författaren</a></li>
-          <li><a href="#book1">Historiska perspektiv på matematik</a></li>
-          <li><a href="#book2">Om nyttan med matematik</a></li>
-          <li><a href="#book3">Matematik och räkning</a></li>
-          <li><a href="#book4">Hågkomster</a></li>
-          <li><a href="#book5">Fundamentala teorem</a></li>
-          <li><a href="#book6">Prydnadsstenar</a></li>
-          <li><a href="#book7">Pierre de Fermat</a></li>
-          <li><a href="#book8">En liten text om grafer</a></li>
-          <li><a href="#book9">Matematik som logiskt systembygge</a></li>
-          <li><a href="#book10">Spridda tankar kring matematikundervisning</a></li>
-        </ul>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="#top">Anders Tengstrand</a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="navLinks" id="menuButton">Meny</button>
+      <nav class="nav-links" id="navLinks" aria-label="Huvudmeny">
+        <a href="#about">Om författaren</a>
+        <a href="#featured">Utvald bok</a>
+        <a href="#publications">Publikationer</a>
+        <a href="#contact">Kontakt</a>
       </nav>
     </div>
   </header>
 
-  <section id="intro">
-    <div class="intro-container">
-      <div id="introCarousel" class="carousel  slide carousel-fade" data-ride="carousel">
-        <div class="carousel-inner" role="listbox">
-          <div class="carousel-item active">
-            <div class="carousel-background"><img src="img/intro-carousel/faded.jpg" alt=""></div>
-            <div class="carousel-container">
-              <div class="carousel-content">
-                <h2>Historiska perspektiv på matematik</h2>
-                <p>
-                    En text skriven av Anders Tengstrand, om matematikens utveckling om hur de begrepp och samband, som nu lärs ut i olika skolformer, har utvecklats
-                </p>
-                <a href="#about" class="btn-get-started scrollto">Läs om författaren</a>
-                <a href="#book1" class="btn2-get-started scrollto">Läs boken online!</a>
-              </div>
-            </div>
-
-          </div>
-
-      </div>
-
-    </div>
-  </section><!-- #intro -->
-
-  <main id="main">
-
-    <section id="about">
-      <div class="container">
-
-        <header class="section-header">
-          <h3>Om författaren</h3>
-          <p>
-            Som framgår av namnet på denna hemsida är mitt namn Anders Tengstrand. Jag
-            pensionerades 2002 som universitetslektor i matematik vid Växjö universitet.
-            Dessförinnan hade jag arbetat med matematikundervisning i Växjö i 35 år – först vid
-            universitetsfilialen, därefter vid Högskolan i Växjö och under de sista åren vid Växjö
-            universitet. Genom en fusion mellan Växjö universitet och Högskolan i Kalmar bildades
-            för tio år sedan Linnéuniversitetet.
-           </p>
-           <div class="col-md-4 offset-md-4">
-           <img src="img/profile-pics/anderstengstrand.png" class="img-fluid img-profile" alt="">
-          </div>
-        </header>
-
-        <div class="row about-cols">
-
-          <div class="col-md-7 wow fadeInUp">
-            <div class="about-col">
-              <h4 class="title">Bakgrund</a></h4>
-              <p>
-                I hela mitt vuxna liv har jag undervisat i matematik. Pensioneringen innebar inte att jag
-                slutade undervisa men jag kunde på ett annat sätt än tidigare kunde välja de uppgifter
-                jag åtog mig. Till slut tar emellertid åren ut sin rätt och själva undervisningen känns
-                arbetsam. Uppdragen blir färre och upphör så småningom. En ny generation tar över
-                med den entusiasm och den energi som krävs. Det är en naturlig och sund utveckling.
-              </p>
-            </div>
-          </div>
-
-
-         <div class="col-md-5 wow fadeInUp">
-            <div class="about-col">
-              <img src="img/intro-carousel/Math-Teacher-Poster.jpg" class="img-fluid" alt="">
-            </div>
-          </div>
-
-
-          <div class="col-md-12 wow fadeInUp" data-wow-delay="0.2s">
-              <div class="about-col">
-                <h4 class="title">Skrivverksamhet</a></h4>
-                <p>
-                    Men även om själva undervisningsverksamheten upphör så är det svårt att släppa
-                    tankarna på matematik och matematikundervisning. Den har blivit en del av min
-                    identitet. Jag återkommer ofta i mina tankar till frågor om varför ämnet ser ut som det
-                    gör. Genom den ständiga debatten om skolans matematikundervisning påminns jag om
-                    didaktiska frågeställningar som i någon mening verkar eviga. För att få struktur på mina
-                    tankar har jag ofta försökt skriva ner dem. Den mest ambitiösa satsningen blev en text
-                    om matematikens utveckling på 590(!) sidor där jag försökt förstå hur de begrepp och
-                    de samband, som nu lärs ut i olika skolformer, har utvecklats. Men det finns också
-                    mindre omfattande texter där jag försökt bena ut olika problemställningar.
-
-                </br>
-                </br>
-                Texterna har jag primärt gjort för mig själv utan tanke på att andra skall läsa dem. Men i
-                skrivandet riktar man ändå sig till tänkta personer och med den teknik som nu finns är
-                det möjligt att utan en omfattande tryckeriprocess låta andra få ta del av funderingarna.
-                Och så har denna hemsida kommit till. Jag vet själv inget om de tekniska detaljerna. Jag
-                kan inte tekniken och orkar inte lära mig den. Jag är för gammal och för trött. Min
-                dotterdotter Emma Nilsson Tengstrand har hjälpt mig. Utan hennes hjälp hade
-                hemsidan aldrig realiserats. Ett stort tack till henne!
-                <br/>
-                <br/>
-                Innehåll
-                <br/>
-                <ul>
-                  <li>Historiska perspektiv på matematik
-                    <br/>
-                    <br/>
-                    Texten finns nu i bokform och kan beställas via mail anders.tengstrand@gmail.com.
-                    Ange namn och adress samt antalet exemplar. Priset per bok är 490 SEK inklusive moms. 
-                    Vidare tillkommer 100 SEK inklusive moms för frakt. Vid beställningar på fler än 5 exemplar kan fraktkostnaderna reduceras. 
-                    Boken trycks on-demand och felaktigheter rättas under hand.
-                  </li>
-                  <br/>
-
-                  <li>Om nyttan med matematik</li>
-                  <li>Matematik och räkning</li>
-                  <li>Lusteliga hågkomster kring tillblifvelsen av ett universitet</li>
-                  <li>Fyra fundamentala teorem</li>
-                  <li>Några prydnadsstenar i klassisk geometri</li>
-                  <li>Pierre de Fermat</li>
-                  <li>En liten text om grafer</li>
-                  <li>Matematik som logiskt systembygge</li>
-                  <li>Spridda tankar kring matematikundervisning</li></ul>
-                </p>
-              </div>
-            </div>
-
-          </div>
-
- <div class="row about-cols">
-
-        </div>
-    </section>
-
-    <section id="book1">
-      <div class="container">
-        <div class="section-header wow fadeInUp">
-          <h3>Historiska perspektiv på matematik</h3>
-          <p>Boken "Historiska perspektiv på matematik" går att läsa online nedan. Tryck
-               <object data="./pdf/Tengstrand_23-07-19-1.pdf" type="application/x-pdf" title="Historiska perspektiv på matematik" width="100%" height="100%">
-                 <a class="book-link" href="./pdf/Tengstrand_23-07-19-1.pdf">här</a>
-                 </object>
-        om du vill öppa boken i ett nytt fönster.</p>
-        </div>
-        <div class="row">
-            <iframe title="Historiska perspektiv på matematik" src="./pdf/Tengstrand_23-07-19-1.pdf" frameborder="1" scrolling="auto"  width="100%" height="1100" ></iframe>
-        </div>
+  <main id="top">
+    <section class="hero" aria-label="Introduktion">
+      <div class="hero-content">
+        <div class="eyebrow">Funderingar kring matematik</div>
+        <h1>Anders Tengstrand</h1>
+        <p>Matematikens historia, idéer och undervisning – samlade texter av Anders Tengstrand.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#publications">Läs texterna</a>
+          <a class="btn btn-secondary" href="#about">Om författaren</a>
         </div>
       </div>
     </section>
 
-    <section id="book2">
-        <div class="container">
-          <div class="section-header wow fadeInUp">
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-title">
+          <h2>Om författaren</h2>
+          <p>En personlig presentation av Anders Tengstrand och tankarna bakom texterna.</p>
+        </div>
+
+        <article class="about-card">
+          <div class="portrait-wrap">
+            <img class="portrait" src="img/profile-pics/anderstengstrand.png" alt="Porträtt av Anders Tengstrand" loading="lazy">
+          </div>
+          <div class="about-text">
+            <p>Som framgår av namnet på denna hemsida är mitt namn Anders Tengstrand. Jag pensionerades 2002 som universitetslektor i matematik vid Växjö universitet. Dessförinnan hade jag arbetat med matematikundervisning i Växjö i 35 år – först vid universitetsfilialen, därefter vid Högskolan i Växjö och under de sista åren vid Växjö universitet. Genom en fusion mellan Växjö universitet och Högskolan i Kalmar bildades för tio år sedan Linnéuniversitetet.</p>
+
+            <p>I hela mitt vuxna liv har jag undervisat i matematik. Pensioneringen innebar inte att jag slutade undervisa men jag kunde på ett annat sätt än tidigare välja de uppgifter jag åtog mig. Till slut tar emellertid åren ut sin rätt och själva undervisningen känns arbetsam. Uppdragen blir färre och upphör så småningom. En ny generation tar över med den entusiasm och den energi som krävs. Det är en naturlig och sund utveckling.</p>
+
+            <p>Men även om själva undervisningsverksamheten upphör så är det svårt att släppa tankarna på matematik och matematikundervisning. Den har blivit en del av min identitet. Jag återkommer ofta i mina tankar till frågor om varför ämnet ser ut som det gör. Genom den ständiga debatten om skolans matematikundervisning påminns jag om didaktiska frågeställningar som i någon mening verkar eviga. För att få struktur på mina tankar har jag ofta försökt skriva ner dem.</p>
+
+            <div class="about-highlight">
+              Den mest ambitiösa satsningen blev en text om matematikens utveckling på 590 sidor där jag försökt förstå hur de begrepp och samband, som nu lärs ut i olika skolformer, har utvecklats.
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section featured" id="featured">
+      <div class="container">
+        <article class="feature-card">
+          <div class="feature-text">
+            <h2>Historiska perspektiv på matematik</h2>
+            <p>En omfattande text om matematikens utveckling och hur de begrepp och samband som lärs ut i olika skolformer har vuxit fram.</p>
+            <p>Texten finns också i bokform och kan beställas via mail. Ange namn, adress och antal exemplar. Priset per bok är 490 SEK inklusive moms. Frakt tillkommer med 100 SEK inklusive moms. Vid beställningar på fler än 5 exemplar kan fraktkostnaderna reduceras.</p>
+            <a class="btn btn-primary" href="./pdf/Tengstrand_23-07-19-1.pdf" target="_blank" rel="noopener">Öppna PDF</a>
+          </div>
+          <div class="feature-image" role="img" aria-label="Matematik och undervisning"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="publications">
+      <div class="container">
+        <div class="section-title">
+          <h2>Publikationer</h2>
+        </div>
+
+        <div class="publications-grid">
+          <article class="pub-card">
+            <div class="pub-number">01</div>
+            <h3>Historiska perspektiv på matematik</h3>
+            <p>En omfattande text om matematikens utveckling.</p>
+            <div class="pub-actions">
+              <a class="btn btn-small open-pdf" href="./pdf/Tengstrand_23-07-19-1.pdf" target="_blank" rel="noopener">Läs PDF</a>
+              <a class="btn btn-small download-pdf" href="./pdf/Tengstrand_23-07-19-1.pdf" download>Ladda ner</a>
+            </div>
+          </article>
+
+          <article class="pub-card">
+            <div class="pub-number">02</div>
             <h3>Om nyttan med matematik</h3>
-            <p>"Om nyttan med matematik" går att läsa nedan. För att öppna texten i ett nytt fönster, tryck
-                <object data="./pdf/Om_nyttan_med_matematik.pdf" type="application/x-pdf" title="Om nyttan med matematik" width="100%" height="100%">
-                  <a class="book-link" href="./pdf/Om_nyttan_med_matematik.pdf">här</a>
-                  </object> </p>
-          </div>
-          <div class="row">
-              <iframe title="Om nyttan med matematik" src="./pdf/Om_nyttan_med_matematik.pdf" frameborder="1" scrolling="auto"  width="100%" height="1100" ></iframe>
-          </div>
-        </div>
-      </section>
-    </br>
+            <p>Tankar kring matematikens nytta och betydelse.</p>
+            <div class="pub-actions">
+              <a class="btn btn-small open-pdf" href="./pdf/Om_nyttan_med_matematik.pdf" target="_blank" rel="noopener">Läs PDF</a>
+              <a class="btn btn-small download-pdf" href="./pdf/Om_nyttan_med_matematik.pdf" download>Ladda ner</a>
+            </div>
+          </article>
 
-    <section id="book3">
-        <div class="container">
-          <div class="section-header wow fadeInUp">
+          <article class="pub-card">
+            <div class="pub-number">03</div>
             <h3>Matematik och räkning</h3>
-            <p>"Matematik och räkning" går att läsa nedan. För att öppna texten i ett nytt fönster, tryck
-                <object data="./pdf/matematikochrakning_20200726.pdf" type="application/x-pdf" title="Historiska perspektiv på matematik" width="100%" height="100%">
-                  <a class="book-link" href="./pdf/matematikochrakning_20200726.pdf">här</a>
-                  </object> </p>
-          </div>
-          <div class="row">
-              <iframe title="Matematik och räkning" src="./pdf/matematikochrakning_20200726.pdf" frameborder="1" scrolling="auto"  width="100%" height="1100" ></iframe>
-          </div>
-        </div>
-      </section>
-    </br>
+            <p>En text om matematik, räkning och förståelse.</p>
+            <div class="pub-actions">
+              <a class="btn btn-small open-pdf" href="./pdf/matematikochrakning_20200726.pdf" target="_blank" rel="noopener">Läs PDF</a>
+              <a class="btn btn-small download-pdf" href="./pdf/matematikochrakning_20200726.pdf" download>Ladda ner</a>
+            </div>
+          </article>
 
-    <section id="book4">
-        <div class="container">
-          <div class="section-header wow fadeInUp">
-            <h3>Lusteliga hågkomster kring tillblifvelsen av ett universitet</h3>
-            <p>"Lusteliga hågkomster kring tillblifvelsen av ett universitet" går att läsa nedan. För att öppna texten i ett nytt fönster, tryck
-                <object data="./pdf/hagkamster3.pdf" type="application/x-pdf" title="Lusteliga hågkomster kring tillblifvelsen av ett universitet" width="100%" height="100%">
-                  <a class="book-link" href="./pdf/hagkamster3.pdf">här</a>
-                  </object> </p>
-          </div>
-          <div class="row">
-              <iframe title="Lusteliga hågkomster kring tillblifvelsen av ett universitet" src="./pdf/hagkamster3.pdf" frameborder="1" scrolling="auto"  width="100%" height="1100" ></iframe>
-          </div>
-        </div>
-      </section>
-    </br>
+          <article class="pub-card">
+            <div class="pub-number">04</div>
+            <h3>Lusteliga hågkomster</h3>
+            <p>Kring tillblifvelsen av ett universitet.</p>
+            <div class="pub-actions">
+              <a class="btn btn-small open-pdf" href="./pdf/hagkamster3.pdf" target="_blank" rel="noopener">Läs PDF</a>
+              <a class="btn btn-small download-pdf" href="./pdf/hagkamster3.pdf" download>Ladda ner</a>
+            </div>
+          </article>
 
-    <section id="book5">
-        <div class="container">
-          <div class="section-header wow fadeInUp">
+          <article class="pub-card">
+            <div class="pub-number">05</div>
             <h3>Fyra fundamentala teorem</h3>
-            <p>"Fyra fundamentala teorem" går att läsa nedan. För att öppna texten i ett nytt fönster, tryck
-                <object data="./pdf/Fyrafundamentalateorem.pdf" type="application/x-pdf" title="Fyra fundamentala teorem" width="100%" height="100%">
-                  <a class="book-link" href="./pdf/Fyrafundamentalateorem.pdf">här</a>
-                  </object> </p>
-          </div>
-          <div class="row">
-              <iframe title="Fyra fundamentala teorem" src="./pdf/Fyrafundamentalateorem.pdf" frameborder="1" scrolling="auto"  width="100%" height="1100" ></iframe>
-          </div>
-        </div>
-      </section>
-    </br>
+            <p>En fördjupande text om fyra centrala teorem.</p>
+            <div class="pub-actions">
+              <a class="btn btn-small open-pdf" href="./pdf/Fyrafundamentalateorem.pdf" target="_blank" rel="noopener">Läs PDF</a>
+              <a class="btn btn-small download-pdf" href="./pdf/Fyrafundamentalateorem.pdf" download>Ladda ner</a>
+            </div>
+          </article>
 
-        <section id="book6">
-        <div class="container">
-          <div class="section-header wow fadeInUp">
-            <h3>Prydnadsstenar</h3>
-            <p>"Prydnadsstenar" går att läsa nedan. För att öppna texten i ett nytt fönster, tryck
-                <object data="./pdf/Prydnadsstenar.pdf" type="application/x-pdf" title="Prydnadsstenar" width="100%" height="100%">
-                  <a class="book-link" href="./pdf/Prydnadsstenar.pdf">här</a>
-                  </object> </p>
-          </div>
-          <div class="row">
-              <iframe title="Prydnadsstenar" src="./pdf/Prydnadsstenar.pdf" frameborder="1" scrolling="auto"  width="100%" height="1100" ></iframe>
-          </div>
-        </div>
-      </section>
-    </br>
+          <article class="pub-card">
+            <div class="pub-number">06</div>
+            <h3>Några prydnadsstenar</h3>
+            <p>I klassisk geometri.</p>
+            <div class="pub-actions">
+              <a class="btn btn-small open-pdf" href="./pdf/Prydnadsstenar.pdf" target="_blank" rel="noopener">Läs PDF</a>
+              <a class="btn btn-small download-pdf" href="./pdf/Prydnadsstenar.pdf" download>Ladda ner</a>
+            </div>
+          </article>
 
-        <section id="book7">
-        <div class="container">
-          <div class="section-header wow fadeInUp">
-            <h3>Pierre de Fermat - amatör och innovatör</h3>
-            <p>"Pierre de Fermat - amatör och innovatör" går att läsa nedan. För att öppna texten i ett nytt fönster, tryck
-                <object data="./pdf/FermatPtex.pdf" type="application/x-pdf" title="Pierre de Fermat" width="100%" height="100%">
-                  <a class="book-link" href="./pdf/FermatPtex.pdf">här</a>
-                  </object> </p>
-          </div>
-          <div class="row">
-              <iframe title="Pierre de Fermat" src="./pdf/FermatPtex.pdf" frameborder="1" scrolling="auto"  width="100%" height="1100" ></iframe>
-          </div>
-        </div>
-      </section>
-    </br>
+          <article class="pub-card">
+            <div class="pub-number">07</div>
+            <h3>Pierre de Fermat</h3>
+            <p>Amatör och innovatör.</p>
+            <div class="pub-actions">
+              <a class="btn btn-small open-pdf" href="./pdf/FermatPtex.pdf" target="_blank" rel="noopener">Läs PDF</a>
+              <a class="btn btn-small download-pdf" href="./pdf/FermatPtex.pdf" download>Ladda ner</a>
+            </div>
+          </article>
 
-        <section id="book8">
-        <div class="container">
-          <div class="section-header wow fadeInUp">
+          <article class="pub-card">
+            <div class="pub-number">08</div>
             <h3>En liten text om grafer</h3>
-            <p>"En liten text om grafer" går att läsa nedan. För att öppna texten i ett nytt fönster, tryck
-                <object data="./pdf/Grafpro3.pdf" type="application/x-pdf" title="En liten text om grafer" width="100%" height="100%">
-                  <a class="book-link" href="./pdf/Grafpro3.pdf">här</a>
-                  </object> </p>
-          </div>
-          <div class="row">
-              <iframe title="En liten text om grafer" src="./pdf/Grafpro3.pdf" frameborder="1" scrolling="auto"  width="100%" height="1100" ></iframe>
-          </div>
-        </div>
-      </section>
-    </br>
+            <p>En introducerande text om grafer.</p>
+            <div class="pub-actions">
+              <a class="btn btn-small open-pdf" href="./pdf/Grafpro3.pdf" target="_blank" rel="noopener">Läs PDF</a>
+              <a class="btn btn-small download-pdf" href="./pdf/Grafpro3.pdf" download>Ladda ner</a>
+            </div>
+          </article>
 
-        <section id="book9">
-        <div class="container">
-          <div class="section-header wow fadeInUp">
+          <article class="pub-card">
+            <div class="pub-number">09</div>
             <h3>Matematik som logiskt systembygge</h3>
-            <p>"Matematik som logiskt systembygge" går att läsa nedan. För att öppna texten i ett nytt fönster, tryck
-                <object data="./pdf/Godel.pdf" type="application/x-pdf" title="Matematik som logiskt systembygge" width="100%" height="100%">
-                  <a class="book-link" href="./pdf/Godel.pdf">här</a>
-                  </object> </p>
-          </div>
-          <div class="row">
-              <iframe title="Matematik som logiskt systembygge" src="./pdf/Godel.pdf" frameborder="1" scrolling="auto"  width="100%" height="1100" ></iframe>
-          </div>
-        </div>
-      </section>
-    </br>
+            <p>Tankar om matematikens logiska struktur.</p>
+            <div class="pub-actions">
+              <a class="btn btn-small open-pdf" href="./pdf/Godel.pdf" target="_blank" rel="noopener">Läs PDF</a>
+              <a class="btn btn-small download-pdf" href="./pdf/Godel.pdf" download>Ladda ner</a>
+            </div>
+          </article>
 
-
-    <section id="book10">
-        <div class="container">
-          <div class="section-header wow fadeInUp">
+          <article class="pub-card">
+            <div class="pub-number">10</div>
             <h3>Spridda tankar kring matematikundervisning</h3>
-            <p>"Spridda tankar kring matematikundervisning" går att läsa nedan. För att öppna texten i ett nytt fönster, tryck
-                <object data="./pdf/Matemund.pdf" type="application/x-pdf" title="Spridda tankar kring matematikundervisning" width="100%" height="100%">
-                  <a class="book-link" href="./pdf/Matemund.pdf">här</a>
-                  </object> </p>
+            <p>Reflektioner kring undervisning i matematik.</p>
+            <div class="pub-actions">
+              <a class="btn btn-small open-pdf" href="./pdf/Matemund.pdf" target="_blank" rel="noopener">Läs PDF</a>
+              <a class="btn btn-small download-pdf" href="./pdf/Matemund.pdf" download>Ladda ner</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="container">
+        <div class="contact-card">
+          <div>
+            <h2>Kontakt</h2>
+            <p>För frågor om texterna, boken eller beställning av tryckt exemplar.</p>
           </div>
-          <div class="row">
-              <iframe title="Spridda tankar kring matematikundervisning" src="./pdf/Matemund.pdf" frameborder="1" scrolling="auto"  width="100%" height="1100" ></iframe>
+          <div>
+            <p><strong>Anders Tengstrand</strong></p>
+            <a class="email-link" href="mailto:anders.tengstrand@gmail.com">anders.tengstrand@gmail.com</a>
           </div>
         </div>
-      </section>
-    </br>
-
+      </div>
+    </section>
   </main>
 
-  <footer id="footer">
-
-    <div class="container">
-      <div class="row footer-info">
-          <div class="col-md-3">
-<p>Antalet gånger sidan har visats</p>
-<a href="http://www.hitwebcounter.com" target="_blank">
-  <img src="http://hitwebcounter.com/counter/counter.php?page=7116504&style=0006&nbdigits=5&type=page&initCount=0" title="webs counters" Alt="webs counters" >
-  </a>
-            </div>
-
-            <div class="col-md-3">
-                <p>Antalet unika sidvisningar</p>
-<a href="http://www.hitwebcounter.com" target="_blank">
-  <img src="http://hitwebcounter.com/counter/counter.php?page=7116509&style=0006&nbdigits=5&type=ip&initCount=0" title="webs counters" Alt="webs counters"   border="0" >
-  </a>
-                            </div>
-
-        <div class="col-md-6 footer-lightgray">
-        <p class="footer-text"><hr class="hr-footer"/></p>
-        <p class="footer-text">Anders Tengstrand</p>
-        <p class="footer-text">Email: anders.tengstrand@gmail.com</p>
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div>
+        <p><strong>Anders Tengstrand</strong></p>
+        <p>Funderingar kring matematik</p>
       </div>
+
+      <div class="counter-wrap" aria-label="Besöksräknare">
+        <!--
+          Om du vill fortsätta med HitWebCounter: låt data-manual-count vara tomt.
+          Om du vill visa en egen manuell siffra: skriv den i data-manual-count, t.ex. data-manual-count="12500".
+          Samma page-id som tidigare används för att inte nollställa befintliga HitWebCounter-värden.
+        -->
+        <div class="counter-box" data-manual-count="">
+          <span>Antalet gånger sidan har visats</span>
+          <strong class="manual-counter"></strong>
+          <a class="counter-external" href="https://www.hitwebcounter.com" target="_blank" rel="noopener">
+            <img src="https://hitwebcounter.com/counter/counter.php?page=7116504&style=0006&nbdigits=5&type=page&initCount=0" title="webs counters" alt="Antal sidvisningar">
+          </a>
+        </div>
+
+        <div class="counter-box" data-manual-count="">
+          <span>Antalet unika sidvisningar</span>
+          <strong class="manual-counter"></strong>
+          <a class="counter-external" href="https://www.hitwebcounter.com" target="_blank" rel="noopener">
+            <img src="https://hitwebcounter.com/counter/counter.php?page=7116509&style=0006&nbdigits=5&type=ip&initCount=0" title="webs counters" alt="Antal unika sidvisningar">
+          </a>
+        </div>
       </div>
     </div>
-  </footer><!-- #footer -->
+  </footer>
 
-  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-  <div id="preloader"></div>
+  <button class="back-to-top" type="button" id="backToTop" aria-label="Tillbaka till toppen">↑</button>
 
-  <!-- JavaScript Libraries -->
-  <script src="lib/jquery/jquery.min.js"></script>
-  <script src="lib/jquery/jquery-migrate.min.js"></script>
-  <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="lib/easing/easing.min.js"></script>
-  <script src="lib/superfish/hoverIntent.js"></script>
-  <script src="lib/superfish/superfish.min.js"></script>
-  <script src="lib/wow/wow.min.js"></script>
-  <script src="lib/waypoints/waypoints.min.js"></script>
-  <script src="lib/counterup/counterup.min.js"></script>
-  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-  <script src="lib/isotope/isotope.pkgd.min.js"></script>
-  <script src="lib/lightbox/js/lightbox.min.js"></script>
-  <script src="lib/touchSwipe/jquery.touchSwipe.min.js"></script>
+  <script>
+    const menuButton = document.getElementById('menuButton');
+    const navLinks = document.getElementById('navLinks');
+    const backToTop = document.getElementById('backToTop');
 
-  <!-- Template Main Javascript File -->
-  <script src="js/main.js"></script>
+    menuButton.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('is-open');
+      menuButton.setAttribute('aria-expanded', String(isOpen));
+      menuButton.textContent = isOpen ? 'Stäng' : 'Meny';
+    });
 
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('is-open');
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.textContent = 'Meny';
+      });
+    });
+
+    window.addEventListener('scroll', () => {
+      backToTop.classList.toggle('is-visible', window.scrollY > 500);
+    }, { passive: true });
+
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    document.querySelectorAll('.counter-box').forEach(box => {
+      const manualValue = box.dataset.manualCount.trim();
+      if (manualValue) {
+        const manualCounter = box.querySelector('.manual-counter');
+        const externalCounter = box.querySelector('.counter-external');
+        manualCounter.textContent = manualValue;
+        manualCounter.style.display = 'block';
+        externalCounter.style.display = 'none';
+      }
+    });
+  </script>
 </body>
 </html>
